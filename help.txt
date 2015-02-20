@@ -1,0 +1,22 @@
+# Forum
+This is my course project.
+If you want to help me with something then write here [link to vk](http://vk.com/vikingwhite)
+
+Questions that interest me
+==========================
+
+1. How to embed code in posts
+2. How to do syntax highlighting in the pre tag
+3. As generally creates a text editor
+
+
+
+echo # Forum >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/WebWorkDeveloper/Forum.git
+git push -u origin master
+
+git remote add origin https://github.com/WebWorkDeveloper/Forum.git
+git push -u origin master
