@@ -50,6 +50,7 @@ code{
 	border-radius: 3px;
 	background: #272822;
 	color:#fff;
+	margin:3px 0;
 }
 
 /*reset bootstrap*/
@@ -350,6 +351,9 @@ input[type=submit]:hover{
 input[type=submit]:active{
 	box-shadow: 0 -3px 0 #25a75c inset;
 }
+input[type=file]{
+	outline: none
+}
 textarea{
 	height: 200px;
 	background: #fff;
@@ -360,6 +364,23 @@ textarea{
 	padding:5px;
 	color:#bcbcbc;
 	outline: none;
+}
+select{
+	width: 300px;
+	height: 50px;
+	background: #fff;
+	border:1px solid #eaeef1;
+	border-radius: 5px;
+	margin-bottom:20px;
+	margin-left:10px;
+	margin-top:20px;
+	color:#bcbcbc;
+	outline: none;
+}
+select:after{
+	content:'';
+	display: block;
+	width: 
 }
 .form{
 	margin-top: 30px;
@@ -401,6 +422,42 @@ EDITOR
 	position: absolute;
 	top:-10px;
 	left:10px;
+}
+#preview-box{
+	width:100%;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+	background: rgba(0,0,0,.7);
+	z-index: 100999;
+}
+.editor-message{
+	margin-top:40px;
+}
+
+.preview-page{
+	margin-top:20px;
+	background: #fafafa;
+	border:1px solid #eaeef1;
+	border-radius: 10px;
+	min-height: 300px;
+	max-height: 430px;
+	padding:30px 10px 30px 0;
+	overflow: auto;
+}
+#view-conteiner{
+	position: relative;
+}
+#preview-cancel{
+	position: absolute;
+	top:20px;
+	right: 30px;
+	font-size: 20px;
+	cursor: pointer;
+}
+#preview-cancel:hover{
+	color:#3498db;
 }
 .editor-panel> button,
 .editor-btn-parse{
@@ -656,7 +713,11 @@ EDITOR
 .user-message-box{
 	margin-left: 10px;
 }
-.status-message{
+.status-message-top{
+	position: relative;
+	color:#bebebe;
+}.status-message{
+	margin-bottom:35px;
 	position: relative;
 	color:#bebebe;
 }
@@ -698,7 +759,9 @@ EDITOR
 	left: 50px;
 	z-index: -1;
 }
-.user-message{
+.user-message,
+.user-message-count,
+.user-message-form{
 	margin-bottom:50px;
 }
 .add-message{
@@ -755,6 +818,138 @@ EDITOR
 	left: 0px;
 	z-index: 10;
 }
+/*LK*/
+#btn-out-account{
+	margin-top:20px;
+}
+.lk-user{
+	min-width: 300px;
+	text-align: center;
+	display: block;
+	margin:auto;
+	color:#9ba3a7;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.lk-avatar{
+	min-width: 70px;
+	margin:auto;
+	display: block;
+	margin-top:30px;
+	margin-bottom:10px;
+}
+.wrap-user-inforamiton{
+	min-width: 500px;
+	display: block;
+	margin:auto;
+}
+.main-user-information{
+	margin-top:15px;
+	padding-bottom:25px;
+	text-align: center;
+	color:#9ba3a7;
+	border-bottom:1px solid #dddfe1;
+}
+
+.message-user-inf,
+.theme-user-inf,
+.otvets-user-inf,
+.thumbs-up-user-inf,
+.thumbs-down-user-inf,
+.vla-user-inf{
+	font-size:1.5em;
+}
+.message-user-inf{
+	color:#2ecc71;
+}
+.theme-user-inf{
+	color:#f1c40f;
+}
+.otvets-user-inf{
+	color:#3895c6;
+}
+.thumbs-up-user-inf{
+	color:#c96fe7;
+}
+.thumbs-down-user-inf{
+	color:#e85a55;
+}
+.vla-user-inf{
+	color:#2980b9;
+}
+
+.user-sub-info-title{
+	font-size:1.2em;
+	float:right;
+}
+.sub-info-user{
+	color:#9ba3a7;
+	border-bottom:1px solid #dddfe1;
+}
+.sub-info-user-line{
+	padding:25px 0;
+}
+.user-social-network{
+	text-align: center;
+}
+.user-social-network span{
+	font-size: 20px;
+	cursor: pointer;
+	line-height: 800%;
+}
+.user-social-network .icon-google__x2b_{
+	color:#ea554f;
+}
+.user-social-network .icon-facebook{
+	color:#405e94;
+}
+.user-social-network .icon-github-01{
+	color:#ffa500;
+}
+.user-social-network .icon-rus-vk-02{
+	color:#56789c;
+}
+.user-social-network .icon-twitter-3{
+	color:#66cbf9;
+}
+.user-social-network .icon-google__x2b_:hover{
+	color:#b83229;
+}
+.user-social-network .icon-facebook:hover{
+	color:#2c3e64;
+}
+.user-social-network .icon-github-01:hover{
+	color:#7f007f;
+}
+.user-social-network .icon-rus-vk-02:hover{
+	color:#43668c;
+}
+.user-social-network .icon-twitter-3:hover{
+	color:#45a7d8;
+}
+
+.dop-user-info{
+	border-bottom:1px solid #dddfe1;
+	color:#9ba3a7;
+}
+
+.dop-user-info-title{
+	float: right;
+}
+.btn-config-user-info{
+	width: 200px;
+	margin:30px 0;
+}
+.dop-user-info-controlls{
+	width: 100%;
+}
+.dop-user-info-controlls tr td{
+	padding:0 10px;
+}
+#review{
+	float: right;
+}
+
 /*
 		############  ############   ############     ###        ###########    #######
 		############  ############   ############     ###        ###########    ########

@@ -1,6 +1,6 @@
 
 (function(){
-	onload = function(){
+	start:onload = function(){
 	var editor_place = document.getElementsByClassName('itEditor');
 		//buttons
 	var buttons = [ 'Bold',
@@ -15,13 +15,18 @@
 			var container = document.createElement('div'),
 				panel = document.createElement('div'),
 				status = document.createElement('div'),
-				parseButton = document.createElement('button');
+				parseButton = document.createElement('button'),
+				preview = document.createElement('div');
+				/*otvets = document.getElementsByClassName('otvets');
 
+			console.log(otvets);*/
 			//set proterty
 			container.className = 'editor-box';
 			panel.className = 'editor-panel';
 			status.className = 'edito-status-bar';
 			status.innerHTML = 'letter:';
+			preview.id = 'preview-box';
+			preview.innerHTML = '<div id="view-conteiner" class="container"><section class="preview-page"><div class="row"><div id="viewer-loader" class="col-md-12"></div></div></section><span id="preview-cancel" class="icon-cancel"></span></div>';
 
 			parseButton.innerHTML = 'Preview';
 			parseButton.className = 'editor-btn-parse';
@@ -32,6 +37,7 @@
 			container.appendChild(status);
 			container.appendChild(panel);
 			container.appendChild(parseButton);
+			// container.appendChild(preview);
 
 			var textarea = this;
 
@@ -46,6 +52,10 @@
 					elem.innerHTML = buttons[j];
 					container.childNodes[2].appendChild(elem);
 			}
+
+			// for(var m =0, ml = otvets.length; m<ml ; m++){
+			// 	addEvent(otvets[m],'click',addEditor);
+			// }
 
 			addEvent(this,'input',showLenght);
 
@@ -87,7 +97,7 @@
 				insert_tag(textarea,'<strike>','</strike>');
 			}
 			function addCode(){
-				insert_text_cursor(textarea,'<code lang="html">HTML\n</code>');
+				insert_text_cursor(textarea,'<code lang="">//code...\n</code>');
 			}
 			function addLink(){
 				var href = prompt('Введите адрес куда будет вести ссылка','https://');
@@ -111,19 +121,38 @@
 			function parseTextarea(){
 				var value = textarea.value;
 				//parse
-				value = value.replace(/\n/g, '<br />');
+				value = value.replace(/\n/g, '<br/>');
 				code = value.match(/<code.*?>(.*?)<\/code>/);
-
+				container.appendChild(preview);
+				//add cancel event
+				var cancel = document.getElementById('preview-cancel');
+				console.log(cancel);
+				if(cancel){
+					addEvent(cancel,'click',closeViewer);
+				}
 
 				//parse stop
-				var view = document.getElementById('view-result-editor');
-				console.log(view);
-				view.innerHTML = value;
+				var loader = document.getElementById('viewer-loader');
+				loader.innerHTML = value;
+			}
+			function closeViewer(){
+				var preview_box = document.getElementById('preview-box');
+				preview_box.remove();
+			}
+			function addEditor(){
+				// var container = this.parentNode.parentNode.parentNode,
+				// 	editor = document.createElement('textarea');
+				// 	editor.className = 'itEditor';
+				// container.appendChild(editor);
+				// console.log(this);
+				// console.log(container);
+
 			}
 
 		}
 		editor_place[i].initEditor();
 	}
+
 
 	//functions events
 	//add event

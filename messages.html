@@ -5,7 +5,7 @@
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
 	<meta name="author" content="Andrey and Anton"/>
-	<title>NEW Forum|themes</title>
+	<title>NEW Forum|messages</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -66,6 +66,16 @@
 		</nav>
 	</header>
 <!-- header stop -->
+	<div class="row">
+		<div class="col-md-12 col-xs-12">
+			<div class="loader-massage">
+				<div class="message complite">
+					<span class="message-text">Вы успешно вошли</span>
+					<span data-idIM="" class="icon-cancel float-right"></span>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- main start-->
 	<main>
 		<div class="container-fluid message-page">
@@ -83,7 +93,7 @@
 				<div class="row ">
 					<div class="col-md-12">
 						<div class="message-box">
-							<div class="status-message">
+							<div class="status-message-top">
 							<a href="#"class="author-message">Sorax</a>
 								<time class="status-time">12:00 12 Devember 2015</time>
 							</div>
@@ -94,7 +104,8 @@
 					</div>
 				</div>
 			</article>
-			<article class="user-message">
+			<!-- FROM  -->
+			<article class="user-message-form">
 				<div class="row">
 					<div class="col-md-1 col-xs-2 user-avatar-col">
 						<a href=""><img class="user-avatar-message round " src="images/2yzif48.jpg" height="50" width="50"></a>
@@ -114,7 +125,8 @@
 					</div>
 				</div>
 			</article>
-			<article class="user-message">
+			<!-- count message -->
+			<article class="user-message-count">
 				<div class="row">
 					<div class="col-md-12 col-xs-12 user-title-col">
 						<div class="user-says">
@@ -123,38 +135,15 @@
 					</div>
 				</div>
 			</article>
-			<article id="one-message" class="user-message">
+			<!-- start message -->
+			<article class="user-message" data-message-id="1" data-message-parent-id="null">
 				<div class="row">
 					<div class="col-md-1 col-xs-2 user-avatar-col">
 						<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
 					</div>
 					<div class="col-md-11 col-xs-10 user-title-col">
 						<div class="user-message-box">
-							<div class="status-message">
-								<a href="#"class="author-message">Sorax</a>
-								<time class="status-time">12:00 12 Devember 2015</time>
-								<span class="message-plus-count">0</span>
-							</div>
-							<div class="text-message">
-								<p>Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.</p>
-							</div>
-							<div class="status-message">
-								<span class="message-context-box">
-									<span class="otvets">Отвеить</span><span class="icon-thumbs-up"></span><span class="icon-thumbs-down"></span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</article>
-			<article class="user-message">
-				<div class="row">
-					<div class="col-md-1 col-xs-2 user-avatar-col">
-						<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
-					</div>
-					<div class="col-md-11 col-xs-10 user-title-col">
-						<div class="user-message-box">
-							<div class="status-message">
+							<div class="status-message-top">
 								<a href="#"class="author-message">Sorax</a>
 								<time class="status-time">12:00 12 Devember 2015</time>
 								<span class="message-plus-count-minus">-2</span>
@@ -171,14 +160,16 @@
 					</div>
 				</div>
 			</article>
-			<article class="user-message">
+			<!-- stop message -->
+			<!-- start message -->
+			<article class="user-message" data-message-id="2" data-message-parent-id="null">
 				<div class="row">
 					<div class="col-md-1 col-xs-2 user-avatar-col">
 						<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
 					</div>
 					<div class="col-md-11 col-xs-10 user-title-col">
 						<div class="user-message-box">
-							<div class="status-message">
+							<div class="status-message-top">
 								<a href="#"class="author-message">Sorax</a>
 								<time class="status-time">12:00 12 Devember 2015 </time>
 								<span class="message-plus-count-plus">+21</span>
@@ -195,19 +186,19 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="colr-md-12">
+					<div class="col-md-12">
 						<span class="drop-message-toggle">Все ответы<span class="icon-down-dir"></span></span>
 					</div>
 				</div>
 					<section class="drop-message">
-						<article class="user-drop-message">
+						<article class="user-drop-message" data-message-id="3" data-message-parent-id="2">
 							<div class="row">
 								<div class="col-md-2 col-xs-3 col-sm-3 col-lg-1 user-drop-avatar">
 									<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
 								</div>
 								<div class="col-md-9 col-xs-8 col-sm-8 col-lg-10 user-title-col">
 									<div class="user-message-box">
-										<div class="status-message">
+										<div class="status-message-top">
 											<a href="#"class="author-message">Sorax</a>
 											<time class="status-time">12:00 12 Devember 2015 </time>
 											<span class="message-plus-count-plus">+21</span>
@@ -224,14 +215,14 @@
 								</div>
 							</div>
 						</article>
-						<article class="user-drop-message">
+						<article class="user-drop-message" data-message-id="4" data-message-parent-id="2">
 							<div class="row">
 								<div class="col-md-2 col-xs-3 col-sm-3 col-lg-1 user-drop-avatar">
 									<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
 								</div>
 								<div class="col-md-9 col-xs-8 col-sm-8 col-lg-10 user-title-col">
 									<div class="user-message-box">
-										<div class="status-message">
+										<div class="status-message-top">
 											<a href="#"class="author-message">Sorax</a>
 											<time class="status-time">12:00 12 Devember 2015 </time>
 											<span class="message-plus-count-plus">+21</span>
@@ -250,14 +241,16 @@
 						</article>
 					</section>
 			</article>
-			<article class="user-message">
+			<!-- stop message -->
+			<!-- starp message -->
+			<article class="user-message" data-message-id="5" data-message-parent-id="null">
 				<div class="row">
 					<div class="col-md-1 col-xs-2 user-avatar-col">
 						<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
 					</div>
 					<div class="col-md-11 col-xs-10 user-title-col">
 						<div class="user-message-box">
-							<div class="status-message">
+							<div class="status-message-top">
 								<a href="#"class="author-message">Sorax</a>
 								<time class="status-time">12:00 12 Devember 2015</time>
 								<span class="message-plus-count-minus">-2</span>
@@ -274,85 +267,8 @@
 					</div>
 				</div>
 			</article>
-			<article class="user-message">
-				<div class="row">
-					<div class="col-md-1 col-xs-2 user-avatar-col">
-						<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
-					</div>
-					<div class="col-md-11 col-xs-10 user-title-col">
-						<div class="user-message-box">
-							<div class="status-message">
-								<a href="#"class="author-message">Sorax</a>
-								<time class="status-time">12:00 12 Devember 2015 </time>
-								<span class="message-plus-count-plus">+21</span>
-							</div>
-							<div class="text-message">
-								<p>Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.</p>
-							</div>
-							<div class="status-message">
-								<span class="message-context-box">
-									<span class="otvets">Отвеить</span><span class="icon-thumbs-up"></span><span class="icon-thumbs-down"></span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="colr-md-12">
-						<span class="drop-message-toggle">Все ответы<span class="icon-down-dir"></span></span>
-					</div>
-				</div>
-					<section class="drop-message">
-						<article class="user-drop-message">
-							<div class="row">
-								<div class="col-md-2 col-xs-3 col-sm-3 col-lg-1 user-drop-avatar">
-									<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
-								</div>
-								<div class="col-md-9 col-xs-8 col-sm-8 col-lg-10 user-title-col">
-									<div class="user-message-box">
-										<div class="status-message">
-											<a href="#"class="author-message">Sorax</a>
-											<time class="status-time">12:00 12 Devember 2015 </time>
-											<span class="message-plus-count-plus">+21</span>
-										</div>
-										<div class="text-message">
-											<p><b>Sorax</b>,Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.</p>
-										</div>
-										<div class="status-message">
-											<span class="message-context-box">
-												<span class="otvets">Отвеить</span><span class="icon-thumbs-up"></span><span class="icon-thumbs-down"></span>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="user-drop-message">
-							<div class="row">
-								<div class="col-md-2 col-xs-3 col-sm-3 col-lg-1 user-drop-avatar">
-									<a href="#"><img class="user-avatar-message round " src="images/user.png" height="50" width="51"></a>
-								</div>
-								<div class="col-md-9 col-xs-8 col-sm-8 col-lg-10 user-title-col">
-									<div class="user-message-box">
-										<div class="status-message">
-											<a href="#"class="author-message">Sorax</a>
-											<time class="status-time">12:00 12 Devember 2015 </time>
-											<span class="message-plus-count-plus">+21</span>
-										</div>
-										<div class="text-message">
-											<p><b>Sorax</b>,Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.Сейчас я работаю над крутым проектом, но я туп как пень и не могу решить эту задачу, помогите плиз.</p>
-										</div>
-										<div class="status-message">
-											<span class="message-context-box">
-												<span class="otvets">Отвеить</span><span class="icon-thumbs-up"></span><span class="icon-thumbs-down"></span>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
-					</section>
-			</article>
+			<!-- stop message -->
+
 
 			<div class="bottom-nav-pages">
 				<div class="row">
@@ -418,7 +334,7 @@
 	</footer>
 <!-- footer stop -->
 	<script src="js/jquery.min.js"></script>
-	<script src="js/editor.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/editor.js"></script>
 </body>
 </html>
