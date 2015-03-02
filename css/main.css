@@ -52,7 +52,9 @@ code{
 	color:#fff;
 	margin:3px 0;
 }
-
+::selection{
+	background: #eaeef1;
+}
 /*reset bootstrap*/
 
 a{
@@ -418,7 +420,6 @@ EDITOR
 	border-radius: 0 5px 0 5px;
 }
 .editor-panel{
-	width: 301px;
 	position: absolute;
 	top:-10px;
 	left:10px;
@@ -434,6 +435,10 @@ EDITOR
 }
 .editor-message{
 	margin-top:40px;
+}
+
+.grey{
+	color:#bcbcbc;
 }
 
 .preview-page{
@@ -500,6 +505,12 @@ EDITOR
 }
 .space-letter{
 	color:#cdcdcd;
+}
+.letter{
+	color:#fff;
+}
+.tag{
+	color:#F9263E;
 }
 
 
@@ -962,7 +973,6 @@ EDITOR
 		##            ############   ############      #######   ###########    ##     ###
 		##            ############   ############         ###    ###########    ##      ###
 */
-
 .status-line{
 	min-height: 100px;
 	background: #fff;

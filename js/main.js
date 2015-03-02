@@ -54,61 +54,17 @@
 		});
 
 		// message in the form
-/*		$("span[data-idIM]").click(function(){
-			var parent = $(this).parent().fadeOut();
+
+	var hidemessage=function(){
+		var parent = $(this).parent().fadeOut();
 			setTimeout(function(){
 				parent.remove();
 			},1600);
+		//удаляем обработчик
+		$('span[data-idIM]').unbind('click',hidemessage);
+	}
 
-		});*/
-
-		$("span[data-idIM]").on('click',function(){
-			var parent = $(this).parent().fadeOut();
-			setTimeout(function(){
-				parent.remove();
-			},1600);
-
-		});
-
-
-/*
-function live (eventType, elementId, cb) {
-	document.addEventListener(eventType, function (event) {
-	var el = event.target, found;
-		while (el && !(found = el.id === elementId)) {
-			el = el.parentElement;
-		}
-		if (found) {
-			cb.call(el, event);
-		}
-	});
-
-}*/
-
-
-
-
-
-
-
-
-		// $('span[data-idIM]').live('click', function(){
-		// 	var parent = $(this).parent();
-		// 		parent.fadeOut();
-		// 		setTimeout(function(){
-		// 			parent.remove();
-		// 		},1600);
-		// });
-
-
-
-
-
-
-
-
-
-
+		$('span[data-idIM]').bind('click',hidemessage);
 
 		//subcategory toggle
 		icons_subcategory.click(function(){
@@ -123,32 +79,29 @@ function live (eventType, elementId, cb) {
 			var that =$(this),
 				m = $(this).closest('article'),
 				m_id=m.attr('data-message-id'),
-				m_p_id=m.attr('data-message-parent-id');
+				m_p_id=m.attr('data-message-parent-id'),
+				value = that.closest('form').children('.editor-box').children('.itEditor').val();
 
-			if(m_p_id=='null'){//если сообщение не имеет родительского сообщения
-				alert('add sub box! and sub message');
-				//удаляем форму , добавляем субсообщения и само сообщение
-				that.closest('.send-otvet').hide();
-				if(false){//если ajax запрос вернул true то рефрешим страницу
-					
-				}else{
-					var error = '<div class="message complite"><span class="message-text">Текст ошибки</span><span data-idIM="" class="icon-cancel float-right"></span></div>';
-					$('.loader-massage').append(error).fadeIn(300);
-					$('body,html').animate({scrollTop:0},400);
-				}
-			}else{// сообщение уже вложено
-				alert('add sub message!');
-				//просто добавляем ещё одно сообщение к субсообщениям
-				that.closest('.send-otvet').hide();
-				if(false){//если ajax запрос вернул true то рефрешим страницу
-					
-				}else{
-					var error = '<div class="message complite"><span class="message-text">Текст ошибки</span><span data-idIM="" class="icon-cancel float-right"></span></div>';
-					$('.loader-massage').append(error).fadeIn(300);
-					$('body,html').animate({scrollTop:0},400);
-				}
+				console.log(value);
+				console.log(that);
 
-			}
+				//parse
+				value = value.replace(/\n/g, '<br/>');
+
+				$.ajax(
+					{
+						url:'../blocks/upload_message.php',
+						type: 'POST',
+						cache:false,
+						data:'id-message='+m_id+'&id-perent-message='+m_p_id+'&value-message='+value,
+						success:function(response){
+							location.reload();
+						},
+					}
+				);
+
+			console.log('id-message='+m_id+'&id-perent-message='+m_p_id+'&value-message='+value);
+
 			console.log(m);
 			console.log(m_id);
 			console.log(m_p_id);

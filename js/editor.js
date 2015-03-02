@@ -97,7 +97,7 @@
 				insert_tag(textarea,'<strike>','</strike>');
 			}
 			function addCode(){
-				insert_text_cursor(textarea,'<code lang="">//code...\n</code>');
+				insert_text_cursor(textarea,'<code lang="html">//code...\n</code>');
 			}
 			function addLink(){
 				var href = prompt('Введите адрес куда будет вести ссылка','https://');
@@ -122,11 +122,13 @@
 				var value = textarea.value;
 				//parse
 				value = value.replace(/\n/g, '<br/>');
-				code = value.match(/<code.*?>(.*?)<\/code>/);
+				code = value.match(/<code.*?>(.|\n)*\<\/code\>/g);
+				console.log(code);
+				
+				
 				container.appendChild(preview);
 				//add cancel event
 				var cancel = document.getElementById('preview-cancel');
-				console.log(cancel);
 				if(cancel){
 					addEvent(cancel,'click',closeViewer);
 				}
@@ -138,17 +140,9 @@
 			function closeViewer(){
 				var preview_box = document.getElementById('preview-box');
 				preview_box.remove();
+				//УДАЛИТЬ ОБРАБОТЧИК!
+				removeEvent(this,'click',closeViewer);
 			}
-			function addEditor(){
-				// var container = this.parentNode.parentNode.parentNode,
-				// 	editor = document.createElement('textarea');
-				// 	editor.className = 'itEditor';
-				// container.appendChild(editor);
-				// console.log(this);
-				// console.log(container);
-
-			}
-
 		}
 		editor_place[i].initEditor();
 	}
