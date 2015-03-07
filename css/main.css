@@ -50,6 +50,11 @@ code{
 	border-radius: 3px;
 	background: #272822;
 	color:#fff;
+	font-family: monospace, monospace;
+	word-wrap:break-word;
+/* 	-webkit-word-wrap:break-word;
+-moz-word-wrap:break-word;
+-ms-word-wrap:break-word; */
 	margin:3px 0;
 }
 ::selection{
@@ -503,16 +508,24 @@ EDITOR
 	right:5px;
 	color:#bcbcbc;
 }
-.space-letter{
-	color:#cdcdcd;
-}
 .letter{
 	color:#fff;
 }
 .tag{
 	color:#F9263E;
 }
-
+.attr{
+	color:#7FE22A;
+}
+.desc{
+	color:#E6DB74;
+}
+.com{
+	color:#75715E;
+}
+.space{
+	color:#dcdcdc;
+}
 
 /*
 *

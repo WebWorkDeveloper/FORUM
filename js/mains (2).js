@@ -80,12 +80,14 @@
 				m = $(this).closest('article'),
 				m_id=m.attr('data-message-id'),
 				m_p_id=m.attr('data-message-parent-id'),
-				m_theme=m.attr('data-id-theme')||null,//id theme or null
 				value = that.closest('form').children('.editor-box').children('.itEditor').val();
+
+				console.log(value);
 
 				//parse
 				var result = value.replace(/<code.*?>(.|\n)*?\<\/code\>/g,function(b){
 					//reset code
+					console.log(b);
 					b = b.replace(/<code.*?>\n/g,'');
 					b = b.replace(/<\/code\>/g,'');
 					//convert
@@ -121,8 +123,7 @@
 						str = '[&lt;\]'+str+'[&gt;]';
 						return str;
 					});
-
-					// close tags
+				// close tags
 
 					b = b.replace(/\[&lt;&frasl;\].*?\[&gt;\]/g,function(str){
 						//reset wrapper
@@ -149,30 +150,19 @@
 					return b;
 				});
 				result = '<pre>'+result+'</pre>';
-				if(m_theme!==null){//если мы пишем в корень темы
-					$.ajax({
+				console.log('id-message='+m_id+'&id-perent-message='+m_p_id+'&value-message='+result);
+				$.ajax(
+					{
 						url:'../blocks/upload_message.php',
-						type:'POST',
+						type: 'POST',
 						cache:false,
-						data:{id_theme:m_theme,value_message:result},
+						data:{id_message:m_id,id_perent_message:m_p_id,value_message:result},
 						success:function(response){
 							location.reload();
 						}
-					});
-				}else{//если пишем ответ на ответ
-					$.ajax(
-						{
-							url:'../blocks/upload_message.php',
-							type: 'POST',
-							cache:false,
-							data:{id_message:m_id,id_perent_message:m_p_id,value_message:result},
-							success:function(response){
-								location.reload();
-							}
-						}
-					);
-				}
-				
+					}
+				);
+
 			return false;
 		});
 
