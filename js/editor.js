@@ -1,6 +1,6 @@
 
 (function(){
-	start:onload = function(){
+	onload = function(){
 	var editor_place = document.getElementsByClassName('itEditor');
 		//buttons
 	var buttons = [ 'Bold',
@@ -94,8 +94,8 @@
 			}
 			function addLink(){
 				var href = prompt('Введите адрес куда будет вести ссылка','https://');
-				if(href==null){
-					return;
+				if(href === null){
+					return false;
 				}
 				insert_tag(textarea,'<a class="a-text" href="'+href+'">','</a>');
 			}
@@ -106,7 +106,7 @@
 			function addImg(){
 				var src = prompt('Введите путь к картинке','https://'),
 					alt = 'image';
-				if(src==null){
+				if(src===null){
 					return;
 				}
 				insert_text_cursor(textarea,'<img src="'+src+'" alt="'+alt+'">');
@@ -124,7 +124,7 @@
 						str = str.replace(/<!--/g,'');
 						str = str.replace(/-->/g,'');
 						str = '[com]'+str+'[/com]';
-						return str});
+						return str;});
 					b = b.replace(/<\//g,'[&lt;&frasl;]');
 					b = b.replace(/<(?!&frasl;)/g,'[&lt;]');
 					b = b.replace(/>/g,'[&gt;]');
@@ -136,9 +136,9 @@
 						str = str.replace(/\[&lt;\]/g,'');
 						str = str.replace(/\[&gt;\]/g,'');
 						//convert
-						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]'});
-						str = str.replace(/ [a-zA-Z0-9]+/gm,function(str){return '[attr]'+str+'[/attr]'});
-						str = str.replace(/".*?"|'.*?'/gm,function(str){return '[desc]'+str+'[/desc]'});
+						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]';});
+						str = str.replace(/ [a-zA-Z0-9]+/gm,function(str){return '[attr]'+str+'[/attr]';});
+						str = str.replace(/".*?"|'.*?'/gm,function(str){return '[desc]'+str+'[/desc]';});
 						//parse
 						str = str.replace(/\[tag\]/,'<span class="tag">');
 						str = str.replace(/\[\/tag\]/,'</span>');
@@ -160,7 +160,7 @@
 						str = str.replace(/\[&lt;&frasl;\]/g,'');
 						str = str.replace(/\[&gt;\]/g,'');
 						//convert
-						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]'});
+						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]';});
 						//parse
 						str = str.replace(/\[tag\]/,'<span class="tag">');
 						str = str.replace(/\[\/tag\]/,'</span>');
@@ -199,6 +199,7 @@
 				removeEvent(this,'click',closeViewer);
 			}
 		}
+
 		editor_place[i].initEditor();
 	}
 
@@ -244,7 +245,7 @@ else
 { // берем текст
  var selectedText=document.selection.createRange().text;
  // ЕСЛИ имеется какой-то выделенный текст, ТО
- if (selectedText!='')
+ if (selectedText!=='')
  { // составляем новый текст
   var newText=_tag_start+selectedText+_tag_end;
   // вставляем новый текст
