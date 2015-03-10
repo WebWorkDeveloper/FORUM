@@ -53,6 +53,56 @@
 				that.closest('.user-message-box').children('form').slideToggle(200);
 		});
 
+		//through up and through down
+
+		var sendThumbs = function(id,that,flag){
+			$.ajax({
+					url:'../blocks/upload_reit.php',
+					cache:false,
+					type:"POST",
+					data:{id:id,flag:flag},
+					success:function(response){
+						//count
+						if(response === false){
+							//nothing
+						}else{
+							var el = that.closest('article').children('.status-message-top').children('.status-message-through');
+							console.log(el);
+							if(response<0){
+								el.text(response);
+								el.removeClass('message-plus-count-plus');
+								el.removeClass('message-plus-count');
+								el.addClass('message-plus-count-minus');
+							}
+							if(response>0){
+								el.text('+'+response);
+								el.removeClass('message-plus-count-minus');
+								el.removeClass('message-plus-count');
+								el.addClass('message-plus-count-plus');
+							}
+							if(response===0){
+								el.text(response);
+								el.removeClass('message-plus-count-minus');
+								el.removeClass('message-plus-count-plus');
+								el.addClass('message-plus-count');
+							}
+						}
+					}
+				});
+		};
+
+		$('.icon-thumbs-up').click(function(){
+			var message = $(this).closest('.user-message'),
+				id=message.attr('data-message-id');
+				sendThumbs(id,$(this),true);
+		});
+
+		$('.icon-thumbs-down').click(function(){
+			var message = $(this).closest('.user-message'),
+				id=message.attr('data-message-id');
+				sendThumbs(id,$(this),false);
+		});
+
 		// message in the form
 
 	var hidemessage=function(){
@@ -62,7 +112,7 @@
 			},1600);
 		//удаляем обработчик
 		$('span[data-idIM]').unbind('click',hidemessage);
-	}
+	};
 
 		$('span[data-idIM]').bind('click',hidemessage);
 
@@ -105,9 +155,9 @@
 						str = str.replace(/\[&lt;\]/g,'');
 						str = str.replace(/\[&gt;\]/g,'');
 						//convert
-						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]'});
-						str = str.replace(/ [a-zA-Z0-9]+/gm,function(str){return '[attr]'+str+'[/attr]'});
-						str = str.replace(/".*?"|'.*?'/gm,function(str){return '[desc]'+str+'[/desc]'});
+						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]';});
+						str = str.replace(/ [a-zA-Z0-9]+/gm,function(str){return '[attr]'+str+'[/attr]';});
+						str = str.replace(/".*?"|'.*?'/gm,function(str){return '[desc]'+str+'[/desc]';});
 						//parse
 						str = str.replace(/\[tag\]/,'<span class="tag">');
 						str = str.replace(/\[\/tag\]/,'</span>');
@@ -129,7 +179,7 @@
 						str = str.replace(/\[&lt;&frasl;\]/g,'');
 						str = str.replace(/\[&gt;\]/g,'');
 						//convert
-						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]'});
+						str = str.replace(/^([a-zA-Z0-9]+)/gm,function(b){return '[tag]'+b+'[/tag]';});
 						//parse
 						str = str.replace(/\[tag\]/,'<span class="tag">');
 						str = str.replace(/\[\/tag\]/,'</span>');
