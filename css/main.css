@@ -921,34 +921,34 @@ EDITOR
 	cursor: pointer;
 	line-height: 800%;
 }
-.user-social-network .icon-google__x2b_{
+.icon-google__x2b_{
 	color:#ea554f;
 }
-.user-social-network .icon-facebook{
+.icon-facebook{
 	color:#405e94;
 }
-.user-social-network .icon-github-01{
+.icon-github-01{
 	color:#ffa500;
 }
-.user-social-network .icon-rus-vk-02{
+.icon-rus-vk-02{
 	color:#56789c;
 }
-.user-social-network .icon-twitter-3{
+.icon-twitter-3{
 	color:#66cbf9;
 }
-.user-social-network .icon-google__x2b_:hover{
+.icon-google__x2b_:hover{
 	color:#b83229;
 }
-.user-social-network .icon-facebook:hover{
+.icon-facebook:hover{
 	color:#2c3e64;
 }
-.user-social-network .icon-github-01:hover{
+.icon-github-01:hover{
 	color:#7f007f;
 }
-.user-social-network .icon-rus-vk-02:hover{
+.icon-rus-vk-02:hover{
 	color:#43668c;
 }
-.user-social-network .icon-twitter-3:hover{
+.icon-twitter-3:hover{
 	color:#45a7d8;
 }
 
@@ -972,6 +972,24 @@ EDITOR
 }
 #review{
 	float: right;
+}
+
+/*file send*/
+#avatar-input{
+	opacity: 0;
+	display: none;
+	filter:alpha(opacity=0); 
+}
+ #send-avatar-button{
+	padding:15px 5px;
+	line-height: 50px;
+	border-radius: 3px;
+	border:0;
+	color:#fff;
+	outline: none;
+}
+#send-avatar-button:active{
+	box-shadow: 0 -3px 0 #25a75c inset;
 }
 
 /*

@@ -14,7 +14,10 @@
 			button_drop_message = $('.drop-message-toggle'),
 			//add editor var
 			button_otvet = $('.otvets'),
-			container = button_otvet.closest('.user-message-box');
+			container = button_otvet.closest('.user-message-box'),
+			//file load (avatar)
+			input_avatar = $('#avatar-input'),
+			input_box = $('.input-file-avatar');
 		//add editor
 		for(var i =0, l = button_otvet.length; i<l;i++){
 			var form = '<form class="send-otvet" action="" method=""><textarea class="itEditor"></textarea><input class="sub-otvet" type="submit" value="Ответить"></form>';
@@ -22,6 +25,13 @@
 			container[i].innerHTML = container[i].innerHTML + form;
 
 		}
+
+
+		//avtar loader
+		$('#avatar-input').on('change',function(){
+			var value = $(this).val();
+			input_box.val(value);
+		});
 
 		// message AJAX
 		var b_sub_otvet = $('.sub-otvet');
@@ -143,7 +153,7 @@
 						str = str.replace(/<!--/g,'');
 						str = str.replace(/-->/g,'');
 						str = '[com]'+str+'[/com]';
-						return str});
+						return str;});
 					b = b.replace(/<\//g,'[&lt;&frasl;]');
 					b = b.replace(/<(?!&frasl;)/g,'[&lt;]');
 					b = b.replace(/>/g,'[&gt;]');

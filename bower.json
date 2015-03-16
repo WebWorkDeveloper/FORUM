@@ -1,0 +1,25 @@
+{
+  "name": "My-project",
+  "version": "1.0.0",
+  "homepage": "https://github.com/WebWorkDeveloper/Forum",
+  "authors": [
+    "WebWorkDeveloper <webworkdeveloper@gmail.com>"
+  ],
+  "description": "doc",
+  "main": "index.html",
+  "keywords": [
+    "game",
+    "books"
+  ],
+  "license": "©viking",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
