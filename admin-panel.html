@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="author" content="Andrey and Anton"/>
+	<title>NEW Forum | Admin Panel</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<!-- preloer start -->
+<div id="preloader">
+	<div class="progress-page">
+		<span id="icon-load" class="icon-spinner"></span>
+		<span>loading...</span>
+	</div>
+</div>
+<!-- preloader stop -->
+<!-- header start-->
+	<header>
+		<div class="head">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3 col-xs-6">
+						<span class="logo">
+							<a href="#">NEW Forum</a>
+						</span>
+					</div>
+					<div class="col-md-3 col-md-offset-6 col-xs-6">
+						<div class="user-bar">
+							<a href="#">
+								<div class="user-avatar-box">
+									<img class="user-avatar" src="images/user.png" height="50" width="51" alt="avatar">
+								</div>
+							</a>
+							<div id="user-info" class="user-info">
+								<ul class="list-none">
+									<li class="user-name">Dyrkov Andreyffff</li>
+									<li class="user-group">front-end developer</li>
+									<li id="user-drop-down-icon" class="icon-down-open"></li>
+								</ul>
+								<ul id="user-drop-list" class="list-none user-drop-menu">
+									<li>Личный кабинет</li>
+									<li>Выход</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="main-nav">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<ul class="main-menu list-none">
+							<li class="active-main-menu">Форум</li>
+							<li class="">Личный кабинет</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+<!-- header stop -->
+<!-- main start-->
+	<main>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4 col-lg-2 col-sm-5 col-xs-5">
+					<div class="admin-side-bar">
+							<div class="wrapper">
+								<span class="icon-admin-chart-pie"></span><h2>Админ панель</h2>
+							</div>
+							<ul class="list-none admin-menu">
+								<li class="active">
+									<span class="icon-admin-th-large"></span><a href="#">Категории</a>
+								</li>
+								<li>
+									<span class="icon-admin-th"></span><a href="#">Подкатегории</a>
+								</li>
+								<li>
+									<span class="icon-admin-th-list-1"></span><a href="#">Темы</a>
+								</li>
+								<li>
+									<span class="icon-admin-mail-1"></span><a href="#">Сообщения</a>
+								</li>
+								<li>
+									<span class="icon-admin-users-1"></span><a href="#">Пользователи</a>
+								</li>
+								<li>
+									<span class="icon-admin-database"></span><a href="#">phpMyAdmin</a>
+								</li>
+							</ul>
+						<div class="scropp-helper">
+							<span id="scroll-top-helper" class="icon-up-open"></span>
+							<span id="scroll-down-helper" class="icon-down-open"></span>
+						</div>
+					</div>
+				</div>
+				<div id="cm-b" class="col-md-9 col-lg-10 col-sm-7 col-xs-7">
+					<!-- message loader start-->
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div class="loader-massage">
+								<div class="message complite">
+									<span class="message-text">Вы успешно вошли</span>
+									<span data-idIM="" class="icon-cancel float-right"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- message loader stop -->
+					<h1 class="title-tabs">Категории</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores suscipit eius veritatis autem, dolore voluptatum, qui deserunt facere hic laborum, facilis quibusdam.</p>
+					<table border="1"class="main-table">
+						<thead>
+							<tr>
+								<td>id</td>
+								<td>Иконка</td>
+								<td>Название</td>
+								<td>Родительская категория</td>
+								<td>Дата и время</td>
+								<td colspan="2"><span class="icon-admin-cog-1"></span><span>Управление</span></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td data-id="0">0</td>
+								<td data-icon="icon-table">icon-table</td>
+								<td data-name="HTML5">HTML5</td>
+								<td data-parent="0">0</td>
+								<td data-date="12 03 2015 12:00">12 03 2015 12:00</td>
+								<td class="controls-td c-resave"><span class="icon-admin-pencil"></span>Изменить</td>
+								<td class="controls-td c-delete"><span class="icon-admin-trash-empty"></span>Удалить</td>
+							</tr>
+							<tr>
+								<td data-id="1">1</td>
+								<td data-icon="icon-css">icon-css</td>
+								<td data-name="CSS3">CSS3</td>
+								<td data-parent="0">0</td>
+								<td data-date="12 03 2015 10:00">12 03 2015 10:00</td>
+								<td class="controls-td c-resave"><span class="icon-admin-pencil"></span>Изменить</td>
+								<td class="controls-td c-delete"><span class="icon-admin-trash-empty"></span>Удалить</td>
+							</tr>
+							<tr>
+							<tr class="review-tr">
+								<td>2</td>
+								<td><input class="input-tc" type="text" value="icon-te"></td>
+								<td><input class="input-tc" type="text" value="SQL"></td>
+								<td><input class="input-tc" type="text" value="0"></td>
+								<td><input class="input-tc" type="text" value="12 03 2015 12:56"></td>
+								<td class="controls-td c-save" colspan="2"><span class="icon-admin-ok-squared"></span>Сохранить</td>
+							</tr>
+								<td data-id="3">3</td>
+								<td data-icon="icon-tesloo">icon-tesloo</td>
+								<td data-name="SQL">SQL</td>
+								<td data-parent="0">0</td>
+								<td data-date="12 03 2015 12:56">12 03 2015 12:56</td>
+								<td class="controls-td c-resave"><span class="icon-admin-pencil"></span>Изменить</td>
+								<td class="controls-td c-delete"><span class="icon-admin-trash-empty"></span>Удалить</td>
+							</tr>
+							<!-- (tr>td{$}+td{Lorem}+td{SQL$}+td{0}+td{ $$ 2015 $$}+td[class=controls-td]{<span class="icon-admin-pencil"></span>Изменить}+td[class="controls-td"]{<span class="icon-admin-trash-empty"></span>Удалить})*200 -->
+							<tr>
+								<td id="add-new-row" colspan="7"><span class="icon-admin-plus"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+<!-- main stop -->
+<!-- footer start-->
+	<footer>
+		<div class="status-line">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-1 col-xs-2 col-sm-2 col-lg-1">
+						<span class="icon-share text50"></span>
+					</div>
+					<div class="col-md-11 col-xs-10 col-sm-10 col-lg-11 ">
+						<div class="row">
+							<div class="col-md-11 col-xs-10 col-sm-10 col-lg-11">
+								<h2 class="status-h2">Статистика форума</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 col-lg-2 col-sm-3 col-xs-12">
+								<span class="status-text">Всего сообщений 4003</span>
+							</div>
+							<div class="col-md-1 col-lg-1 col-sm-2 col-xs-12">
+								<span class="status-text">тем  2343</span>
+							</div>
+							<div class="col-md-2 col-lg-2 col-sm-3 col-xs-12">
+								<span class="status-text">Пользователей 435434</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<span class="copyright-text">2015-2016 &copy; NEW Forum</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- footer stop -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/admin.js"></script>
+</body>
+</html>

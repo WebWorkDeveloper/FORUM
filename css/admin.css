@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+/*COLORS LIST*/
+/*
+
+*sidebar #383d3b
+*active #2a2f2d
+*
+*
+*
+*
+*
+*
+*
+
+*/
+
+main > .container-fluid,
+main > .container-fluid > .row div{
+	padding:0;
+}
+
+/*SIDEBAR*/
+.admin-side-bar{
+	min-height: 850px;
+	height: 100%;
+	width:250px;
+	position: relative;
+	background: #383d3b;
+	color:#fff;
+	border-bottom:3px dashed #fff;
+}
+.admin-side-bar .wrapper h2{
+	color:#fff;
+	display: inline;
+	line-height: 50px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	-ms-user-select:none;
+}
+.admin-side-bar>.wrapper{
+	margin-bottom:5px;
+	background: #2a2f2d;
+}
+.admin-side-bar .wrapper>span {
+	line-height: 50px;
+	margin-left:35px;
+	padding-right: 10px;
+}
+.admin-menu li{
+	padding-top:5px;
+	padding-bottom:5px;
+	width: 100%;
+	cursor:pointer;
+}
+.admin-menu li:hover{
+	background: #2a2f2d;
+}
+.admin-menu li>span {
+	margin-left:60px;
+	padding-right:8px;
+}
+#cm-b{
+	padding-right:67px;
+}
+.admin-side-bar .active{
+	background: #2a2f2d;
+}
+
+
+/*TABLE*/
+.main-table{
+	width:100%;
+	margin-bottom:30px;
+	border:1px solid #eaeef1;
+	text-align: center;
+}
+.main-table thead{
+	border:1px solid #788288;
+	font-weight: 600;
+	text-align: center;
+}
+.main-table thead td{
+	padding:3px;
+}
+#add-new-row{
+	color:#dcdcdc;
+	cursor: pointer;
+}
+#add-new-row:hover{
+	background: #fafafa;
+}
+.controls-td{
+	width:150px;
+	cursor: pointer;
+}
+.controls-td:hover{
+	color:#fff;
+	background: #383d3b;
+}
+.main-table td {
+	padding:1px;
+}
+
+.input-tc{
+	margin:0 !important;
+	padding:0 !important;
+	border-radius: 0 !important;
+	border:0 !important;
+	width: 100% !important;
+	height: 30px !important;
+	color:#3c4144 !important;
+}
+.main-table tr:not(.review-tr):hover{
+	background: #fafafa;
+}
+.review-tr{
+	background: #34495e;
+}
+.review-tr .controls-td{
+	color:#fff;
+}
+.review-tr td:first-child{
+	color:#fff;
+}
+.title-tabs{
+	padding:20px 0;
+}
+.title-tabs ~ p {
+	padding-bottom:20px;
+}
+
+/*HEPLER*/
+.scropp-helper{
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	bottom:170px;
+	left:100px;
+	color: rgba(0,0,0,.3);
+	text-align: center;
+	border-radius: 50%;
+	z-index: 999;
+}
+.scropp-helper:hover{
+	background: rgba(120,130,136,.3);
+}
+.scropp-helper span{
+	-webkit-transition:all .2s;
+	-moz-transition:all .2s;
+	-o-transition:all .2s;
+	-ms-transition:all .2s;
+	transition:all .2s;
+	display: block;
+	cursor: pointer;
+}
+.scropp-helper>span:hover{
+	color:#2ecc71;
+}
+
+
+
+/*FONT LINK*/
+@font-face {
+	font-family: 'admin';
+	src: url('../fonts/admin/fontello.eot?84669379');
+	src: url('../fonts/admin/fontello.eot?84669379#iefix') format('embedded-opentype'),
+		url('../fonts/admin/fontello.woff?84669379') format('woff'),
+		url('../fonts/admin/fontello.ttf?84669379') format('truetype'),
+		url('../fonts/admin/fontello.svg?84669379#fontello') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ @font-face {
+	font-family: 'fontello';
+	src: url('../font/fontello.svg?84669379#fontello') format('svg');
+	}
+}
+*/
+
+[class^="icon-admin"]:before, [class*=" icon-admin"]:before {
+	font-family: "admin";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+	
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-admin-plus:before { content: '\e800'; } /* '' */
+.icon-admin-cancel:before { content: '\e801'; } /* '' */
+.icon-admin-ok-squared:before { content: '\e802'; } /* '' */
+.icon-admin-ok:before { content: '\e803'; } /* '' */
+.icon-admin-pencil:before { content: '\e804'; } /* '' */
+.icon-admin-th-large:before { content: '\e862'; } /* '' */
+.icon-admin-th:before { content: '\e863'; } /* '' */
+.icon-admin-th-list-1:before { content: '\e882'; } /* '' */
+.icon-admin-users-1:before { content: '\e88d'; } /* '' */
+.icon-admin-attach-1:before { content: '\e88e'; } /* '' */
+.icon-admin-lock-1:before { content: '\e88f'; } /* '' */
+.icon-admin-lock-open-1:before { content: '\e890'; } /* '' */
+.icon-admin-lock-open-alt-1:before { content: '\e895'; } /* '' */
+.icon-admin-download-cloud-1:before { content: '\e896'; } /* '' */
+.icon-admin-upload-cloud-1:before { content: '\e897'; } /* '' */
+.icon-admin-trash-1:before { content: '\e898'; } /* '' */
+.icon-admin-trash-empty:before { content: '\e899'; } /* '' */
+.icon-admin-doc-1:before { content: '\e89a'; } /* '' */
+.icon-admin-docs:before { content: '\e89b'; } /* '' */
+.icon-admin-doc-text:before { content: '\e89c'; } /* '' */
+.icon-admin-doc-inv:before { content: '\e89d'; } /* '' */
+.icon-admin-doc-text-inv:before { content: '\e89e'; } /* '' */
+.icon-admin-file-pdf:before { content: '\e89f'; } /* '' */
+.icon-admin-file-word:before { content: '\e8a0'; } /* '' */
+.icon-admin-file-excel:before { content: '\e8a1'; } /* '' */
+.icon-admin-file-powerpoint:before { content: '\e8a2'; } /* '' */
+.icon-admin-file-archive:before { content: '\e8a3'; } /* '' */
+.icon-admin-file-image:before { content: '\e8a4'; } /* '' */
+.icon-admin-file-video:before { content: '\e8a5'; } /* '' */
+.icon-admin-file-code:before { content: '\e8a6'; } /* '' */
+.icon-admin-file-audio:before { content: '\e8a7'; } /* '' */
+.icon-admin-cog-alt:before { content: '\e8a8'; } /* '' */
+.icon-admin-wrench:before { content: '\e8a9'; } /* '' */
+.icon-admin-sliders:before { content: '\e8aa'; } /* '' */
+.icon-admin-cog-1:before { content: '\e8ab'; } /* '' */
+.icon-admin-toggle-on:before { content: '\e8ac'; } /* '' */
+.icon-admin-toggle-off:before { content: '\e8ad'; } /* '' */
+.icon-admin-chart-bar-1:before { content: '\e8ae'; } /* '' */
+.icon-admin-chart-pie:before { content: '\e8af'; } /* '' */
+.icon-admin-chart-area:before { content: '\e8b0'; } /* '' */
+.icon-admin-chart-line:before { content: '\e8b1'; } /* '' */
+.icon-admin-database:before { content: '\e8b2'; } /* '' */
+.icon-admin-mail-1:before { content: '\e8b3'; } /* '' */
+.icon-admin-attention-1:before { content: '\e8b4'; } /* '' */
+.icon-admin-attention-circled:before { content: '\e8b5'; } /* '' */
