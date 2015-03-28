@@ -15,6 +15,7 @@
 
 */
 
+
 main > .container-fluid,
 main > .container-fluid > .row div{
 	padding:0;
@@ -111,6 +112,7 @@ main > .container-fluid > .row div{
 	width: 100% !important;
 	height: 30px !important;
 	color:#3c4144 !important;
+	display:table-cell;
 }
 .main-table tr:not(.review-tr):hover{
 	background: #fafafa;
@@ -130,7 +132,14 @@ main > .container-fluid > .row div{
 .title-tabs ~ p {
 	padding-bottom:20px;
 }
-
+.banrow{
+	background: #e74c3c;
+	color:#fff;
+	cursor:pointer;
+}
+.banrow:hover{
+	background:#c0392b!important;
+}
 /*HEPLER*/
 .scropp-helper{
 	position: fixed;
@@ -158,7 +167,24 @@ main > .container-fluid > .row div{
 .scropp-helper>span:hover{
 	color:#2ecc71;
 }
+.clip{
+	width:100%;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
 
+@media (max-width: 1610px){
+	.admin-side-bar{
+		width:220px;
+	}
+	#cm-b{
+		padding-right:3px;
+	}
+	.admin-menu li>span {
+		margin-left:40px;
+	}
+
+}
 
 
 /*FONT LINK*/
