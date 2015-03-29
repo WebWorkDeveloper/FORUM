@@ -41,11 +41,15 @@ $(document).ready(function($) {
 		var that = $(this),
 			container = that.parent(),
 			inputs = container.children('td:not(.controls-td):not([data-id])'),
-			controls = container.children('td.controls-td');
+			controls = container.children('td.controls-td'),
+			hashdata=[];//hash data 
+
+			hashdata.push(container.children('td[data-id]').attr('data-id'));
 
 			if($('.review-tr').size()===0){
 				inputs.each(function(){
 					var v = $(this).html();
+					hashdata.push(v);
 					$(this).html('');
 					$(this).append('<input class="input-tc" type="text" value="'+v+'">');
 				});
@@ -60,23 +64,20 @@ $(document).ready(function($) {
 				container.addClass('review-tr');
 
 				container.append('<td class="controls-td c-save" colspan="2"><span class="icon-admin-ok-squared"></span>Сохранить</td>');
-				container.children('td.c-save').click(saveData);
-
+				container.children('td.c-save').click(function(){saveData(hashdata,container);});
 			}else{
 				//nothing
 			}
 	}
-	function saveData(){
+	function saveData(hashdata,cont){
 		var that = $(this),
-			container = that.parent(),
-			inputs = container.children('td').children('input.input-tc'),
+			inputs = cont.children('td').children('input.input-tc'),
 			data = [],
-			id = container.children('td[data-id]');
-
+			id = cont.children('td[data-id]');
 		//add id to data[]
 		data.push(id.attr('data-id'));
 
-		container.removeClass('review-tr');
+		cont.removeClass('review-tr');
 
 		//save in table
 		inputs.each(function(){
@@ -86,8 +87,7 @@ $(document).ready(function($) {
 			$(this).remove();
 		});
 
-		SaveData_category(data,container,that);//передать сюда инпуты и пройти по ним в ajax 
-
+		SaveData_category(data,cont,that,hashdata);
 	}
 	function deleteData(){
 		var that = $(this),
@@ -193,18 +193,23 @@ $(document).ready(function($) {
 
 	//AJAX FUNCTIONS
 
-	function SaveData_category(data,containere,thate){
-		var container = containere,
-			that = thate;
-		if(data[0]==='null'){//id
+	function SaveData_category(data,cont,thate,hashdatabase){
+		var container = cont,
+			that = thate,
+			hashdata = hashdatabase;
+			console.log(data);
+
+		if(data[0]==='null'){
 			//add new row
 			$.ajax({
 				url:'../blocks/ADM_catigoria.php',
 				data:{data:data,action:location.search},
 				type:'POST',
 				success:function(response){
-					if(response===''){
+					
+					if(response==''){
 						alert('Данные не были внесены в Базу Данных. Попробуйте ещё раз');
+
 						return false;
 					}else{
 						container.children('td[data-id]').html(response);
@@ -220,10 +225,12 @@ $(document).ready(function($) {
 				type:'POST',
 				data:{data:data,action:location.search},
 				success:function(response){
-
+						alert(response);
 					if(response === 'true'){
 						//delete save button
+						var that = cont.children('.c-save');
 						that.unbind('click', saveData);
+						console.log(that);
 						that.remove();
 
 						container.removeClass('review-tr');
@@ -237,7 +244,28 @@ $(document).ready(function($) {
 						container.children('td.c-delete').click(deleteData);
 					}else{
 						alert('Данные не были применены. Попробейте ещё раз!');
-						//добавить логику которая откатит все изменения в инпутах и уберёт кнопку сохранить
+						//delete inputs
+						container.children('td[data-id]').attr('data-id',hashdata[0]);//save id
+
+						var inputs = container.children('td').children('input');
+		
+
+						for(var i =1, l = inputs.length; i <=l ; i++){
+							inputs[i-1].parentNode.appendChild(document.createTextNode(hashdata[i]));
+							inputs[i-1].remove();
+							console.log(inputs[i-1]+' = '+hashdata[i]);
+						}
+						container.removeClass('review-tr');
+						//удалить кнопку сохранить
+						container.children('.c-save').remove();
+
+						//create buttons control
+						container.append('<td class="controls-td c-resave"><span class="icon-admin-pencil"></span>Изменить</td>');
+						container.append('<td class="controls-td c-delete"><span class="icon-admin-trash-empty"></span>Удалить</td>');
+
+						container.children('td.c-resave').click(resaveData);
+						container.children('td.c-delete').click(deleteData);
+
 						return false;
 					}
 				}
