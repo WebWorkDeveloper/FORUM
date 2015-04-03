@@ -8,7 +8,34 @@ $(document).ready(function($) {
 		addButton = $('td#add-new-row'),
 		alltr = $('.main-table tr'),
 		banButtons = $('.c-ban'),
-		unbanButtons = $('.c-unban');
+		unbanButtons = $('.c-unban'),
+		//pupap colors
+		pupapButton = $('.main-table tr td[data-icon]'),
+		colors = [  'pomegranat',
+					'alizarit',
+					'pumpkin',
+					'carrot',
+					'orange',
+					'sun_flower',
+					'midniht_blue',
+					'wet_asphalt',
+					'wisteria',
+					'amethyst',
+					'belize_hole',
+					'peter_river',
+					'green_sea',
+					'turquise'],
+		pupapContainerstart='<div class="pupapcolors">',
+		pupapContainerend='</div>',
+		pupapContainer;
+
+		//pupap
+		for(var i=0,l=colors.length;i<l;i++){
+			pupapContainerstart = pupapContainerstart+'<i class='+'"'+colors[i]+'"'+'><\/i>';
+		}
+
+		pupapContainer =pupapContainerstart+pupapContainerend;
+
 
 	//=============
 	// controllers
@@ -28,6 +55,66 @@ $(document).ready(function($) {
 		},400);
 	});
 
+	//color pupap
+	pupapButton.dblclick(pupap);
+
+	function pupap(){
+		var pupapC = $('.pupapcolors'),
+		that = $(this),
+		container=that.closest('tr'),
+		save = container.children('td.c-save');
+
+		if(save.length>=1){//если есть кнопка сохранить
+			if(pupapC.length===0){//если нету пупапа и при этом есть кнопка сохранить
+				that.append(pupapContainer);
+				//add here logic (bind event to colors)
+				bindEventForColors();
+			}else{
+				if(that.children('.pupapcolors').length>0){//не уверен
+					pupapC.remove();
+					unbindEventForColors();
+				}else{
+					pupapC.remove();
+					unbindEventForColors();
+					that.append(pupapContainer);
+					bindEventForColors();
+				}
+			}
+		}else{
+			//nothing
+		}
+		function bindEventForColors(){
+			//bind event
+			var popup = $('.pupapcolors');
+			popup.children('i').bind('click',setcolor);
+		}
+		function unbindEventForColors(){
+			//unbind event
+			var popup = $('.pupapcolors');
+			//resave bind
+			popup.children('i').unbind('click',setcolor);
+		}
+	}
+
+	//colorpupap function
+	function setcolor(){
+		var classname = $(this).attr('class'),
+			input = $('td[data-icon]>input.input-tc');
+		if($.trim(input.val()).split(' ').length>=2){
+			//color
+			var value = $.trim(input.val()).split(' ');
+			input.val(value[0]+' '+classname);
+			input.parent().attr('data-icon',value[0]+' '+classname);
+			input.parent().attr('class',classname);
+		}else{
+			//no color
+			input.val(input.val()+' '+classname);
+			input.parent().attr('data-icon',input.val()+' '+classname);
+			input.parent().attr('class',classname);
+		}
+	}
+
+
 	//controls
 	resaveButton.click(resaveData);
 	saveButtons.click(saveData);
@@ -43,6 +130,10 @@ $(document).ready(function($) {
 			inputs = container.children('td:not(.controls-td):not([data-id])'),
 			controls = container.children('td.controls-td'),
 			hashdata=[];//hash data 
+
+			//reset pupap colors
+			$('.pupapcolors').remove();
+			unbindEventForColors();
 
 			hashdata.push(container.children('td[data-id]').attr('data-id'));
 
@@ -68,6 +159,12 @@ $(document).ready(function($) {
 			}else{
 				//nothing
 			}
+
+		function unbindEventForColors(){
+			//unbind event
+			var popup = $('.pupapcolors');
+			popup.children('i').unbind('click',setcolor);
+		}
 	}
 	function saveData(hashdata,cont){
 		var that = $(this),
@@ -163,31 +260,16 @@ $(document).ready(function($) {
 			flag = 'ban',
 			container = that.parent(),
 			id=0;
-		$('<td class="controls-td c-unban"><span class="icon-admin-lock-open-1"></span>Разбанить</td>').insertBefore(that);
-		container.children('td.c-unban').click(unban);
-		container.addClass('banrow');
 		id=container.children('td[data-id]').attr('data-id');
-		that.unbind('click', ban);
-		that.remove();
-
-		//add ajax to here
-		BanUsers_forum(id,flag);
-
+		BanUsers_forum(id,flag,{container:container,that:that});
 	}
 	function unban (){
 		var that = $(this),
 			flag = 'unban',
 			container = that.parent(),
 			id=0;
-		$('<td class="controls-td c-ban"><span class="icon-admin-lock-1"></span>Забанить</td>').insertBefore(that);
-		container.children('td.c-ban').click(ban);
-		container.removeClass('banrow');
 		id=container.children('td[data-id]').attr('data-id');
-		that.unbind('click',unban);
-		that.remove();
-
-		//add ajax to here
-		BanUsers_forum(id,flag);
+		BanUsers_forum(id,flag,{container:container,that:that});
 	}
 
 
@@ -207,7 +289,7 @@ $(document).ready(function($) {
 				type:'POST',
 				success:function(response){
 					
-					if(response==''){
+					if(response==' '){
 						alert('Данные не были внесены в Базу Данных. Попробуйте ещё раз');
 
 						return false;
@@ -225,12 +307,11 @@ $(document).ready(function($) {
 				type:'POST',
 				data:{data:data,action:location.search},
 				success:function(response){
-						alert(response);
+
 					if(response === 'true'){
 						//delete save button
 						var that = cont.children('.c-save');
 						that.unbind('click', saveData);
-						console.log(that);
 						that.remove();
 
 						container.removeClass('review-tr');
@@ -244,17 +325,21 @@ $(document).ready(function($) {
 						container.children('td.c-delete').click(deleteData);
 					}else{
 						alert('Данные не были применены. Попробейте ещё раз!');
-						//delete inputs
-						container.children('td[data-id]').attr('data-id',hashdata[0]);//save id
 
-						var inputs = container.children('td').children('input');
-		
+						//delete inputs
+						/*container.children('td[data-id]').attr('data-id',hashdata[0]);//save id
+
+						var inputs = container.children('td').children('input.input-tc');
+						console.log(inputs);
+						console.log(container);
+						console.log(hashdata);
 
 						for(var i =1, l = inputs.length; i <=l ; i++){
 							inputs[i-1].parentNode.appendChild(document.createTextNode(hashdata[i]));
 							inputs[i-1].remove();
 							console.log(inputs[i-1]+' = '+hashdata[i]);
 						}
+						alert('dd');
 						container.removeClass('review-tr');
 						//удалить кнопку сохранить
 						container.children('.c-save').remove();
@@ -264,7 +349,8 @@ $(document).ready(function($) {
 						container.append('<td class="controls-td c-delete"><span class="icon-admin-trash-empty"></span>Удалить</td>');
 
 						container.children('td.c-resave').click(resaveData);
-						container.children('td.c-delete').click(deleteData);
+						container.children('td.c-delete').click(deleteData);*/
+						location.reload();
 
 						return false;
 					}
@@ -272,15 +358,27 @@ $(document).ready(function($) {
 			});
 		}
 	}
-	function BanUsers_forum(id,flag){
+	function BanUsers_forum(id,flag,obj){
+		var container = obj.container,
+			that = obj.that;
 		if(flag==='ban'){
 			$.ajax({
 				url:'../blocks/ADM_catigoria.php',
 				type:'POST',
 				data:{ban:{id:id}},
 				success:function(response){
-					alert(response);
-					return true;
+					if(response==='true'){
+							$('<td class="controls-td c-unban"><span class="icon-admin-lock-open-1"></span>Разбанить</td>').insertBefore(that);
+							container.children('td.c-unban').click(unban);
+							container.addClass('banrow');
+							that.unbind('click', ban);
+							that.remove();
+						return true;
+					}else{
+						alert('Пользователь не был заблокирован! Попробуйте ешё');
+						return false;
+					}
+					
 				}
 			});
 		}else{
@@ -290,8 +388,17 @@ $(document).ready(function($) {
 					type:'POST',
 					data:{unban:{id:id}},
 					success:function(response){
-						alert(response);
-						return true;
+						if(response==='true'){
+								$('<td class="controls-td c-ban"><span class="icon-admin-lock-1"></span>Забанить</td>').insertBefore(that);
+								container.children('td.c-ban').click(ban);
+								container.removeClass('banrow');
+								that.unbind('click',unban);
+								that.remove();
+							return true;
+						}else{
+							alert('Пользователь не был разбанен! Попробуйте ещё');
+							return false;
+						}
 					}
 				});
 			}else{

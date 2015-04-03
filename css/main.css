@@ -991,6 +991,188 @@ EDITOR
 #send-avatar-button:active{
 	box-shadow: 0 -3px 0 #25a75c inset;
 }
+.main-table tr td[data-icon]{
+	position: relative;
+	cursor:pointer;
+	-webkit-user-select:none;
+}
+.main-table tr:hover > td[data-icon]:before{
+	opacity: 1;
+}
+.main-table tr td[data-icon]:before{
+	content:'';
+	position: absolute;
+	top:50%;
+	margin-top:-5px;
+	right:5px;
+	width:10px;
+	height:10px;
+	opacity: 0;
+}
+.pupapcolors{
+	position: absolute;
+	top:50%;
+	right:-4px;
+	width:30px;
+	margin-top:7px;
+	min-height: 100px;
+	border-radius: 5px;
+	background: #fff;
+	z-index: 40;
+	border:1px solid #eaeef1;
+}
+.pupapcolors>i{
+	width:10px;
+	height:10px;
+	display: inline-block;
+}
+.pupapcolors>i:hover{
+	-webkit-transform:scale(1.5);
+	-moz-transform:scale(1.5);
+	-o-transform:scale(1.5);
+	-ms-transform:scale(1.5);
+	transform:scale(1.5);
+}
+/*COLORS FOR icons*/
+
+span.turquise{
+	color: #1abc9c;
+}
+i.turquise,
+.turquise:before{
+	background: #1abc9c;
+}
+
+
+span.green_sea{
+	color: #16a085;
+}
+i.green_sea,
+.green_sea:before{
+	background: #16a085;
+}
+
+
+span.emerald{
+	color: #2ecc71;
+}
+i.emerald,
+.emerald:before{
+	background: #2ecc71;
+}
+
+
+span.nephritis{
+	color: #27ae60;
+}
+i.nephritis,
+.nephritis:before{
+	background: #27ae60;
+}
+
+
+span.peter_river{
+	color: #3498db;
+}
+i.peter_river,
+.peter_river:before{
+	background: #3498db;
+}
+
+
+span.belize_hole{
+	color: #2980b9;
+}
+i.belize_hole,
+.belize_hole:before{
+	background: #2980b9;
+}
+
+span.amethyst{
+	color: #9b59b6;
+}
+i.amethyst,
+.amethyst:before{
+	background: #9b59b6;
+}
+
+span.wisteria{
+	color: #8e44ad;
+}
+i.wisteria,
+.wisteria:before{
+	background: #8e44ad;
+}
+
+span.wet_asphalt{
+	color: #34495e;
+}
+i.wet_asphalt,
+.wet_asphalt:before{
+	background: #34495e;
+}
+
+span.midniht_blue{
+	color: #2c3e50;
+}
+i.midniht_blue,
+.midniht_blue:before{
+	background: #2c3e50;
+}
+
+span.sun_flower{
+	color: #f1c40f;
+}
+i.sun_flower,
+.sun_flower:before{
+	background: #f1c40f;
+}
+
+span.orange{
+	color: #f39c12;
+}
+i.orange,
+.orange:before{
+	background: #f39c12;
+}
+
+span.carrot{
+	color: #e67e22;
+}
+i.carrot,
+.carrot:before{
+	background: #e67e22;
+}
+
+span.pumpkin{
+	color: #d35400;
+}
+i.pumpkin,
+.pumpkin:before{
+	background: #d35400;
+}
+
+span.alizarit{
+	color: #e74c3c;
+}
+i.alizarit,
+.alizarit:before{
+	background: #e74c3c;
+}
+
+span.pomegranat{
+	color: #c0392b;
+}
+i.pomegranat,
+.pomegranat:before{
+	background: #c0392b;
+}
+/*
+add span color
+add icon background
+add :before background
+*/
+
 
 /*
 		############  ############   ############     ###        ###########    #######
